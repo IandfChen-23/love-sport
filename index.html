@@ -4,11 +4,12 @@
 <head>
     <title>物理姣和石头哥的瘦身计划</title>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-<!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">    <script type="text/javascript" charset="utf8"
-        src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" charset="utf8"
+    src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.js"></script>
 </head>
 
 <body>
@@ -22,8 +23,8 @@
         </thead>
         <tbody style="text-align: center">
             <tr>
-                <td >星期一</td>
-                <td><input id="monday_jiao"/></td>
+                <td>星期一</td>
+                <td><input id="monday_jiao" /></td>
                 <td><input /></td>
             </tr>
             <tr>
@@ -57,8 +58,8 @@
                 <td><input /></td>
             </tr>
             <tr>
-                <td ><button type="button" class="btn btn-success" id="sum">提交</button></td>
-                <td><input id="sum_jiao"/></td>
+                <td><button type="button" class="btn btn-success" id="sum">提交</button></td>
+                <td><input id="sum_jiao" /></td>
                 <td><input /></td>
             </tr>
         </tbody>
@@ -70,18 +71,18 @@
                 searching: false,
                 ordering: false
             });
-            $('#sum').click(function(){
-                let mondy=parseFloat($('#monday_jiao').val())
+            $('#sum').click(function () {
+                let mondy = parseFloat($('#monday_jiao').val())
                 $('#monday_jiao').insertAfter(`<label >${mondy} </label>`);
-                let tuesday=parseFloat($('#monday_jiao').val())
-                let wensday=parseFloat($('#monday_jiao').val())
-                let thurday=parseFloat($('#monday_jiao').val())
-                let friday=parseFloat($('#monday_jiao').val())
-                let saturday=parseFloat($('#monday_jiao').val())
-                let sunday=parseFloat($('#monday_jiao').val())
-                $('#sum_jiao').val(parseFloat(mondy+tuesday))    
+                let tuesday = parseFloat($('#monday_jiao').val())
+                let wensday = parseFloat($('#monday_jiao').val())
+                let thurday = parseFloat($('#monday_jiao').val())
+                let friday = parseFloat($('#monday_jiao').val())
+                let saturday = parseFloat($('#monday_jiao').val())
+                let sunday = parseFloat($('#monday_jiao').val())
+                $('#sum_jiao').val(parseFloat(mondy + tuesday))
             })
-           
+
         });
     </script>
 
