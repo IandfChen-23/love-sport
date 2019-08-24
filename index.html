@@ -93,6 +93,7 @@
                 for (let i = 0; i < 7; i++) {
                     sum_lei = parseFloat($('tr td:nth-child(3) input')[i].value || 0) + sum_lei;
                 }
+                localStorage.setItem('sum_lei',parseInt(sum_lei) )
                 $('#sum_lei').val(sum_lei);
 
             })
