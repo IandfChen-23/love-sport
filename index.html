@@ -8,8 +8,14 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
         integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-    <script type="text/javascript" charset="utf8"
-    src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.js">
+    </script>
+    <script src="http://code.highcharts.com/highcharts.js"></script>
+    <style>
+    .dataTables_info{
+        display: none;
+    }
+    </style>
 </head>
 
 <body>
@@ -60,10 +66,11 @@
             <tr>
                 <td><button type="button" class="btn btn-success" id="sum">提交</button></td>
                 <td><input id="sum_jiao" /></td>
-                <td><input /></td>
+                <td><input id="sum_lei" /></td>
             </tr>
         </tbody>
     </table>
+    <div id="container" style="width: 100%; height: 400px; margin: 0 auto"></div>
     <script>
         $(document).ready(function () {
             let table = $('#table_id_example').DataTable({
@@ -71,18 +78,74 @@
                 searching: false,
                 ordering: false
             });
-            $('#sum').click(function () {
-                let mondy = parseFloat($('#monday_jiao').val())
-                $('#monday_jiao').insertAfter(`<label >${mondy} </label>`);
-                let tuesday = parseFloat($('#monday_jiao').val())
-                let wensday = parseFloat($('#monday_jiao').val())
-                let thurday = parseFloat($('#monday_jiao').val())
-                let friday = parseFloat($('#monday_jiao').val())
-                let saturday = parseFloat($('#monday_jiao').val())
-                let sunday = parseFloat($('#monday_jiao').val())
-                $('#sum_jiao').val(parseFloat(mondy + tuesday))
-            })
 
+            $('#sum').click(function () {
+                let sum_jiao = 0;
+                for (let i = 0; i < 7; i++) {
+                    sum_jiao = parseFloat($('tr td:nth-child(2) input')[i].value || 0) + sum_jiao;
+                }
+                $('#sum_jiao').val(sum_jiao);
+                let sum_lei = 0;
+                for (let i = 0; i < 7; i++) {
+                    sum_lei = parseFloat($('tr td:nth-child(3) input')[i].value || 0) + sum_lei;
+                }
+                $('#sum_lei').val(sum_lei);
+            })
+            var title = {
+                text: '物理姣和石头哥的每日运动量'
+            };
+            var subtitle = {
+                text: '看好物理姣'
+            };
+            var xAxis = {
+                categories: ['星期一', '星期二', '星期三', '星期四', '星期五', '星期六',
+                    '星期天']
+            };
+            var yAxis = {
+                title: {
+                    text: '运动量（分钟）'
+                },
+                plotLines: [{
+                    value: 0,
+                    width: 1,
+                    color: '#808080'
+                }]
+            };
+
+            var tooltip = {
+                valueSuffix: 'min'
+            }
+
+            var legend = {
+                layout: 'vertical',
+                align: 'bottom',
+                verticalAlign: 'middle',
+                borderWidth: 0
+            };
+
+            var series = [{
+                    name: '物理姣',
+                    data: [1,2,3,4,5,6,7
+                    ]
+                },
+                {
+                    name: '石头哥',
+                    data: [9,22,33,34,35,36,37
+                    ]
+                }
+            ];
+
+            var json = {};
+
+            json.title = title;
+            json.subtitle = subtitle;
+            json.xAxis = xAxis;
+            json.yAxis = yAxis;
+            json.tooltip = tooltip;
+            json.legend = legend;
+            json.series = series;
+
+            $('#container').highcharts(json);
         });
     </script>
 
