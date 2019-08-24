@@ -22,9 +22,9 @@
     <table id="table_id_example" class="display" style="text-align: center">
         <thead>
             <tr style="text-align: center">
-                <th style="width: 20%;text-align: center">时间</th>
-                <th style="width: 40%;text-align: center">物理姣(小时）</th>
-                <th style="width: 40%;text-align: center">石头哥(小时）</th>
+                <th style="text-align: center">时间</th>
+                <th style="text-align: center">物理姣(分钟）</th>
+                <th style="text-align: center">石头哥(分钟）</th>
             </tr>
         </thead>
         <tbody style="text-align: center">
@@ -90,6 +90,9 @@
                     sum_lei = parseFloat($('tr td:nth-child(3) input')[i].value || 0) + sum_lei;
                 }
                 $('#sum_lei').val(sum_lei);
+                var monday_jiao
+                $('#container').highcharts(json);
+
             })
             var title = {
                 text: '物理姣和石头哥的每日运动量'
@@ -125,12 +128,12 @@
 
             var series = [{
                     name: '物理姣',
-                    data: [1,2,3,4,5,6,7
+                    data: [2,3,4,5,6,7
                     ]
                 },
                 {
                     name: '石头哥',
-                    data: [9,22,33,34,35,36,37
+                    data: [9,22,33,34,35,36,37,
                     ]
                 }
             ];
@@ -141,8 +144,7 @@
             json.subtitle = subtitle;
             json.xAxis = xAxis;
             json.yAxis = yAxis;
-            json.tooltip = tooltip;
-            json.legend = legend;
+            json.tooltip = tooltip;;
             json.series = series;
 
             $('#container').highcharts(json);
