@@ -73,6 +73,10 @@
     <div id="container" style="width: 100%; height: 400px; margin: 0 auto"></div>
     <script>
         $(document).ready(function () {
+            let sum_jiao =parseInt(localStorage.getItem('sum_jiao') ||0);
+            $('#sum_jiao').val(sum_jiao);
+            let sum_lei = parseInt(localStorage.getItem('sum_lei') ||0);
+            $('#sum_lei').val(sum_lei);
             let table = $('#table_id_example').DataTable({
                 paging: false,
                 searching: false,
@@ -80,18 +84,16 @@
             });
 
             $('#sum').click(function () {
-                let sum_jiao = 0;
+                
                 for (let i = 0; i < 7; i++) {
                     sum_jiao = parseFloat($('tr td:nth-child(2) input')[i].value || 0) + sum_jiao;
                 }
+                localStorage.setItem('sum_jiao',parseInt(sum_jiao) )
                 $('#sum_jiao').val(sum_jiao);
-                let sum_lei = 0;
                 for (let i = 0; i < 7; i++) {
                     sum_lei = parseFloat($('tr td:nth-child(3) input')[i].value || 0) + sum_lei;
                 }
                 $('#sum_lei').val(sum_lei);
-                var monday_jiao
-                $('#container').highcharts(json);
 
             })
             var title = {
